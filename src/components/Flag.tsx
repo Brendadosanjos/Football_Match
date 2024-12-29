@@ -8,7 +8,7 @@ interface FlagProps {
   alt?: string; // Texto alternativo da imagem
 }
 
-const Flag: React.FC<FlagProps> = ({ countryCode, style = "flat", size = 64, alt }) => {
+const Flag: React.FC<FlagProps> = ({ countryCode, style = "flat", size = 80, alt }) => {
   const flagUrl = getFlagUrl(countryCode, style, size);
 
   return (

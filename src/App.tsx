@@ -9,16 +9,19 @@ const App: React.FC = () => {
   const [count, setCount] = useState(0)
   const [count2, setCount2] = useState(0)
 
+
   // Obter o nome do país a partir do código
   const getCountryName = (code: string) => {
     return countries.find((country) => country.code === code)?.name || "Unknown";
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-gray-800 p-6">
+    <div 
+      className="min-h-screen flex items-center justify-center bg-cover bg-center text-gray-800 p-6"
+      style={{ backgroundImage: 'url(public/background.jpg)' }} // Defina o caminho para sua imagem
+      >
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-8">Football Match</h1>
-
+      <h1 className="text-5xl font-bold mb-8">Football Match</h1>
         {/* Seleção de Times */}
         <div className="flex justify-center gap-10 mb-12">
           {/* Dropdown para Team 1 */}
@@ -74,7 +77,7 @@ const App: React.FC = () => {
           </div>
           
           {/* "X" no meio */}
-          <div className="text-4xl font-bold text-gray-700 fixed">X</div>
+          <div className="text-4xl font-bold text-white fixed">X</div>
 
           {/* Time 2 */}
           <div className="text-center -mr-48 fixed">
@@ -93,13 +96,13 @@ const App: React.FC = () => {
           <button  
           className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-green-400" 
           onClick={() => {
-           setCount((count) => count + 1);
-           shootConfetti();}}>
+          setCount((count) => count + 1);
+          shootConfetti();}}>
             GOOOOOAL!🎉
           </button>
           <button className="ml-8 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-green-400" 
           onClick={() => {
-            setCount((count) => count + 1);
+            setCount2((count2) => count2 + 1);
             shootConfetti();}}>
           GOOOOOAL!🎉
           </button>
@@ -107,11 +110,11 @@ const App: React.FC = () => {
           {/* Botões de Anulado*/}
           <div>
           <button className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-red-500"
-          onClick={() => setCount((count) => count - 1)}>
+          onClick={() => setCount((count) => (count > 0 ? count - 1 : count))}>
           DISALLOWED😩
           </button>
           <button className="p-2 ml-8 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500  bg-white hover:bg-red-500"
-          onClick={() => setCount2((count2) => count2 - 1)}>
+          onClick={() => setCount2((count2) => (count2 > 0 ? count2 - 1 : count2))}>
           DISALLOWED😩
           </button>
           </div>
