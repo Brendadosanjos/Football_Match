@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { countries } from "./data/countries";
 import { getFlagUrl } from "./utils/flagsApi";
+import { shootConfetti } from "./utils/confetti";
 
 const App: React.FC = () => {
   const [team1, setTeam1] = useState<string>("BR"); // Time 1
@@ -89,12 +90,17 @@ const App: React.FC = () => {
           <div className="p-6">
           {/* Botões de Gol*/}
           <div className="m-2">
-          <button className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-green-400" 
-          onClick={() => setCount((count) => count + 1)}>
+          <button  
+          className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-green-400" 
+          onClick={() => {
+           setCount((count) => count + 1);
+           shootConfetti();}}>
             GOOOOOAL!🎉
           </button>
           <button className="ml-8 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-green-400" 
-          onClick={() => setCount2((count2) => count2 + 1)}>
+          onClick={() => {
+            setCount((count) => count + 1);
+            shootConfetti();}}>
           GOOOOOAL!🎉
           </button>
           </div>
