@@ -5,6 +5,8 @@ import { getFlagUrl } from "./utils/flagsApi";
 const App: React.FC = () => {
   const [team1, setTeam1] = useState<string>("BR"); // Time 1
   const [team2, setTeam2] = useState<string>("DE"); // Time 2
+  const [count, setCount] = useState(0)
+  const [count2, setCount2] = useState(0)
 
   // Obter o nome do país a partir do código
   const getCountryName = (code: string) => {
@@ -67,8 +69,9 @@ const App: React.FC = () => {
               className="mx-auto mb-2"
             />
             <p>{getCountryName(team1)}</p>
+            {count}
           </div>
-
+          
           {/* "X" no meio */}
           <div className="text-4xl font-bold text-gray-700 fixed">X</div>
 
@@ -80,6 +83,31 @@ const App: React.FC = () => {
               className="mx-auto mb-2"
             />
             <p>{getCountryName(team2)}</p>
+            {count2}
+          </div>
+        </div>
+          <div className="p-6">
+          {/* Botões de Gol*/}
+          <div className="m-2">
+          <button className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-green-400" 
+          onClick={() => setCount((count) => count + 1)}>
+            GOOOOOAL!🎉
+          </button>
+          <button className="ml-8 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-green-400" 
+          onClick={() => setCount2((count2) => count2 + 1)}>
+          GOOOOOAL!🎉
+          </button>
+          </div>
+          {/* Botões de Anulado*/}
+          <div>
+          <button className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white hover:bg-red-500"
+          onClick={() => setCount((count) => count - 1)}>
+          DISALLOWED😩
+          </button>
+          <button className="p-2 ml-8 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500  bg-white hover:bg-red-500"
+          onClick={() => setCount2((count2) => count2 - 1)}>
+          DISALLOWED😩
+          </button>
           </div>
         </div>
       </div>
